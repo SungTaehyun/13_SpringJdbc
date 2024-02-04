@@ -42,9 +42,9 @@ public class MemberDaoImpl extends JdbcDaoSupport implements MemberDao {
 
 	@Override
 	public int join(HashMap<String, String> params) {
-		Sha512Encoder encoder = Sha512Encoder.getInstance();
-		String passwd = params.get("passwd");
-		String encodeTxt = encoder.getSecurePassword(passwd);
+		Sha512Encoder encoder = Sha512Encoder.getInstance();//여기부터
+		String passwd = params.get("passwd");//사용자가 입력한 값
+		String encodeTxt = encoder.getSecurePassword(passwd);//여기까지는 암호화하는 코드이다.
 		String sql = "INSERT INTO lecture.member "
 				+ "(member_id, passwd, email, join_dtm) "
 				+ "VALUES('" + params.get("memberId")
